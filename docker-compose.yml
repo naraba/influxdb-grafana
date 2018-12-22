@@ -1,0 +1,29 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb
+#    ports:
+#      - '8083:8083' # Web UI is deprecated and disabled by default
+    expose:
+      - '8086'
+    env_file:
+      - ./influxdb/influxdb.env
+    volumes:
+      - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./volumes/influxdb:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./grafana/grafana.env
+    volumes:
+      # see https://community.grafana.com/t/new-docker-install-with-persistent-storage-permission-problem/10896/3
+      - grafana-storage:/var/lib/grafana
+    links:
+      - influxdb
+
+volumes:
+  grafana-storage:
+
