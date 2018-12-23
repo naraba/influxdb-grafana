@@ -1,4 +1,6 @@
 volumes/
+*~
 *.swp
+*.swo
 grafana.png
 
