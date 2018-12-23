@@ -21,7 +21,15 @@ services:
     volumes:
       # see https://community.grafana.com/t/new-docker-install-with-persistent-storage-permission-problem/10896/3
       - grafana-storage:/var/lib/grafana
-    links:
+
+  sampleapp:
+    build:
+      context: .
+      dockerfile: ./sampleapp/Dockerfile
+    env_file:
+      - ./influxdb/influxdb.env
+    command: python app.py
+    depends_on:
       - influxdb
 
 volumes:

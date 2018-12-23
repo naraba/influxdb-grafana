@@ -9,6 +9,8 @@ influxdb/influxdb.env
 * INFLUXDB_DB: 初期構築時に作るデータベース
 * INFLUXDB_ADMIN_USER: 管理者
 * INFLUXDB_ADMIN_PASSWORD: INFLUXDB_ADMIN_USEのパスワード
+* INFLUXDB_WRITE_USER: INFLUXDB_DBに対する更新権限のみを持つユーザ
+* INFLUXDB_WRITE_USER_PASSWORD: INFLUXDB_WRITE_USERのパスワード
 * INFLUXDB_READ_USER: INFLUXDB_DBに対する参照権限のみを持つユーザ
 * INFLUXDB_READ_USER_PASSWORD: INFLUXDB_READ_USERのパスワード
 
@@ -72,8 +74,8 @@ sudo rm -rf ./volumes
 $ docker volumes rm (volume name)
 ```
 
-
 ## TODO
 
 * Grafanaでのアラート設定（メール通知）
 * blah-blah-blah
+
