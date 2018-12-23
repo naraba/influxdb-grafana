@@ -25,10 +25,11 @@ services:
   sampleapp:
     build:
       context: .
-      dockerfile: ./sampleapp/Dockerfile
+      dockerfile: ./sampleapp/Dockerfile_Node
     env_file:
       - ./influxdb/influxdb.env
-    command: python app.py
+    command: node app.js
+#    command: python app.py
     depends_on:
       - influxdb
 

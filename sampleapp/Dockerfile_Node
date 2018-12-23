@@ -1,0 +1,10 @@
+FROM node:10.14.2-alpine
+
+ENV APP_HOME /app
+
+RUN npm install influx && \
+    mkdir -p $APP_HOME
+
+WORKDIR $APP_HOME
+ADD ./sampleapp/app.js $APP_HOME/
+
